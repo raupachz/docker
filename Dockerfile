@@ -3,7 +3,7 @@ FROM java:8-jre
 MAINTAINER Björn Raupach <raupach@me.com>
 
 ENV TOMCAT_MAJOR 8
-ENV TOMCAT_VERSION 8.0.36
+ENV TOMCAT_VERSION 8.5.4
 
 ENV TOMCAT_TGZ apache-tomcat.tar.gz
 ENV TOMCAT_TGZ_URL https://www.apache.org/dist/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz
@@ -21,8 +21,7 @@ USER tomcat
 RUN set -e \
     && curl -o ${TOMCAT_TGZ} -L -f -sS ${TOMCAT_TGZ_URL} \
     && tar -xf ${TOMCAT_TGZ} --strip-components=1 \
-    && sed -i '86 a\\t       keystoreFile="${catalina.home}/conf/keystore"' conf/server.xml \
-    && sed -i '84d;89d' conf/server.xml \
+    && sed -i '83d;91d' conf/server.xml \
     && rm bin/*.bat \
     && rm ${TOMCAT_TGZ}
 
@@ -33,7 +32,7 @@ RUN keytool -genkeypair -noprompt \
         -alias tomcat \
         -keypass changeit \
         -storepass changeit \
-        -keystore conf/keystore
+        -keystore conf/localhost-rsa.jks
 
 EXPOSE 8080 8443
 CMD ["catalina.sh", "run"]
