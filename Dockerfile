@@ -3,10 +3,10 @@ FROM openjdk:8-jre
 MAINTAINER Björn Raupach <raupach@me.com>
 
 ENV TOMCAT_MAJOR 8
-ENV TOMCAT_VERSION 8.5.4
+ENV TOMCAT_VERSION 8.5.8
 ENV TOMCAT_TGZ apache-tomcat.tar.gz
 ENV TOMCAT_TGZ_URL https://www.apache.org/dist/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz
-ENV TOMCAT_SHA c964b0468ffaa61e6167780ec9e8790d7ec779cb
+ENV TOMCAT_SHA 25fc3b108a81c421fb5cd2632a56cdde9fcc03bc
 
 RUN groupadd -r tomcat && useradd -r -g tomcat tomcat
 

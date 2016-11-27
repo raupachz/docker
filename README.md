@@ -23,4 +23,4 @@ Change into the host directory with your WAR-files. This could be a Maven
 
 Now run the container and mount the local directory.
 
-    docker run -it --rm -P -v `pwd`:/opt/apache-tomcat-8.5.4/webapps raupach/tomcat
+    docker run -it --rm -p 8080:8080 p 8443:8443 -v `pwd`:/opt/apache-tomcat-8.5.8/webapps raupach/tomcat
